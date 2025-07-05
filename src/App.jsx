@@ -13,6 +13,8 @@ function App() {
           <Header />
           <Routes>
             <Route path='/' element={<Home />} />
+            <Route path='/retreat-pos/' element={<Home />} />
+            <Route path='/retreat-app/retreat-pos/' element={<Home />} />
           </Routes>
         </div>
       </BrowserRouter>
