@@ -1,0 +1,234 @@
+#pos {
+  width: 100%;
+  max-width: 70vw;
+  height: auto;
+  padding-bottom: 2rem; /* 하단 패딩으로 간격 조정 */
+  /* border-right: 1px solid rgb(215, 213, 213); */
+}
+
+/* 메뉴 버튼 스타일 */
+
+.menu-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid rgb(204, 204, 204);
+}
+.menu-button {
+  color: white;
+  width: 9rem;
+  height: 4rem;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  margin: 1rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background: #667eea; /* 단순한 단색 */
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+}
+.menu-button .menu-name {
+  font-weight: 600;
+  font-size: 1.5rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.menu-button:hover {
+  background: #5a67d8; /* 호버 시 약간 어두운 색 */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+.menu-button:active {
+  transform: translateY(-1px);
+}
+
+/* 메뉴 이름 스타일 */
+.menu-name {
+  font-weight: bold;
+  color: white;
+}
+
+/* 인풋박스 */
+*,
+*:focus {
+  outline: none;
+}
+
+.form {
+  width: 100%;
+  margin-left: 3rem;
+  font-family: sans-serif;
+  background: #fff;
+}
+.input-container {
+  position: relative;
+  margin-top: 2rem;
+}
+.input-container input {
+  display: block;
+  width: 400px;
+  height: 40px;
+  background: transparent;
+  border: solid 1px #ccc;
+  transition: all 0.3s ease;
+  padding: 2.3rem 1.3rem;
+  font-size: 1rem;
+}
+.input-container input:focus {
+  border-color: rgb(177, 177, 236);
+}
+.input-container input::placeholder {
+  font-size: 0.9rem;
+  color: #999;
+}
+.input-container label {
+  position: absolute;
+  cursor: text;
+  z-index: 2;
+  top: 13px;
+  left: 10px;
+  font-weight: bold;
+  background: #fff;
+  padding: 0 10px;
+  color: #999;
+  transition: all 0.3s ease;
+}
+.input-container input:focus + label,
+.input-container input:valid + label {
+  font-size: 1.1rem;
+  top: -5px;
+}
+.input-container input:focus + label {
+  color: blue;
+}
+.line {
+  height: 1px;
+  background: linear-gradient(90deg, #dccbf2, #c09ef0);
+  margin: 10px 0;
+  border-radius: 1px;
+}
+
+/* 주문 리스트 스타일 */
+.order-list-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 5%;
+}
+.order-list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  row-gap: 2rem;
+  column-gap: 3rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1rem;
+}
+
+.empty-order {
+  text-align: center;
+  color: #8e9aaf;
+  font-size: 16px;
+  padding: 40px 20px;
+  font-style: italic;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  margin: 20px 0;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 28px 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 100%; /* 그리드 셀 전체 너비 사용 */
+  height: 100%; /* 그리드 셀 전체 높이 사용 */
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.order-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 1);
+}
+
+.item-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.item-name {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.item-quantity {
+  background: linear-gradient(135deg, #e7c4c4 0%, #c7aee1 100%);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.item-total {
+  font-weight: bold;
+  color: #207d47;
+  font-size: 18px;
+  text-shadow: 0 1px 2px rgba(39, 174, 96, 0.1);
+}
+
+/* 주문 요약 스타일 */
+.order-summary {
+  width: 250px;
+  border-radius: 12px;
+  padding: 20px 30px;
+  margin-left: 50px;
+}
+
+.summary-item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+/* 주문 버튼 스타일 */
+.submit-order-btn {
+  background: #38256b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 20px 40px;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.submit-order-btn:hover {
+  background: #6751a3;
+}
+
+.submit-order-btn:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}

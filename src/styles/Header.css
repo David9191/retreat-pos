@@ -1,15 +1,59 @@
-header {
-    background-color: #333;
-    color: #fff;
-    font-size: 18px;
-    font-weight: bold;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+#header {
+  width: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #e7e6e6;
+  font-size: 18px;
+  font-weight: bold;
+  height: 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: relative;
 }
 
-header > h1 {
-    display: fixed;
-    top: 50%;
+#title {
+  margin: 0;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.info {
+  display: flex;
+  position: absolute;
+  right: 8rem;
+  font-size: 1.4rem;
+  color: rgb(225, 202, 249);
+}
+
+/* 스크롤바 숨기기 */
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* 웹킷 브라우저(Chrome, Safari, Edge) 스크롤바 숨기기 */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Firefox 스크롤바 숨기기 */
+html {
+  scrollbar-width: none;
+}
+
+/* IE/Edge 스크롤바 숨기기 */
+body {
+  -ms-overflow-style: none;
+}
+
+#total-quantity {
+  margin-right: 30px;
 }

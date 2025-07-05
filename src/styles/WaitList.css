@@ -1,0 +1,127 @@
+/* WaitList 전체 컨테이너 */
+#order-wait-completed-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  width: 40vw;
+  height: 75vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 각 섹션 컨테이너 */
+#order-wait-completed-list > div {
+  width: 100%;
+  height: 60%;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgb(226, 226, 226);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-height: 50%;
+  overflow: scroll;
+}
+
+/* 헤더 스타일 */
+#order-wait-completed-list header {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #495057;
+  text-align: center;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-bottom: 2px solid #cfd3ea;
+}
+
+/* 리스트 컨테이너 */
+.wait-list-container,
+.completed-list-container {
+  overflow-y: auto;
+}
+
+/* ul 리셋 */
+.wait-list-container ul,
+.completed-list-container ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+/* 주문 아이템 스타일 */
+.wait-list,
+.completed-list {
+  background: white;
+  border-radius: 8px;
+  padding: 0.5rem;
+  margin-bottom: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e9ecef;
+}
+
+/* 메뉴 리스트 스타일 */
+.menu-list {
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+  padding-left: 16px;
+  margin-bottom: 0.8rem;
+}
+
+/* 버튼 컨테이너 */
+#order-wait-completed-list > div > div > ul > div {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+/* 버튼 스타일 */
+.to-completed-btn,
+.to-wait-btn {
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1;
+  max-width: 60px;
+  margin-left: 10px;
+}
+
+.to-completed-btn {
+  background: #28a745;
+  color: white;
+}
+
+.to-completed-btn:hover {
+  background: #218838;
+}
+
+.to-wait-btn {
+  background: #dc3545;
+  color: white;
+}
+
+.to-wait-btn:hover {
+  background: #c82333;
+}
+
+/* 스크롤바 */
+.wait-list-container::-webkit-scrollbar,
+.completed-list-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.wait-list-container::-webkit-scrollbar-track,
+.completed-list-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.wait-list-container::-webkit-scrollbar-thumb,
+.completed-list-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 2px;
+}

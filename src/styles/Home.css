@@ -1,3 +1,14 @@
-div {
-    background-color: #333;
+#home-container {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  padding: 0 1vw;
+}
+
+.order-list {
+  max-width: 60vw;
+}
+
+.wait-completed-list {
+  max-width: 40vw;
 }
