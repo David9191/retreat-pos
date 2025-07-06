@@ -100,9 +100,9 @@ const WaitList = () => {
               <div key={i}>
                 <li className='completed-list'>
                   <div className='completed-menu-list'>
-                    {item.customer}
+                    {item.customer ? `${item.customer}: ` : ''}
                     {JSON.parse(item.order).map((item, i) => (
-                      <span key={i}>{`${item.name}(${item.quantity}), `}</span>
+                      <span key={i}>{`${item.name}(${item.quantity})  `}</span>
                     ))}
                   </div>
                 </li>

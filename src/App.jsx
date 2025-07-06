@@ -22,4 +22,6 @@ function App() {
   );
 }
 
+App.displayName = 'App'; // 이 줄 추가
+
 export default App;
