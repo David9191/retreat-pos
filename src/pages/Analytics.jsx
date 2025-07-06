@@ -51,7 +51,6 @@ const Analytics = () => {
     };
 
     fetchData();
-    console.log(result);
   }, []);
 
   return (
