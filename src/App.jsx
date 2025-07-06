@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import Home from './pages/Home';
+import Analytics from './pages/Analytics';
 import { OrderProvider } from './context/OrderContext';
+import Home from './pages/Home';
 import './App.css';
 
 function App() {
@@ -13,8 +14,9 @@ function App() {
           <Header />
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/retreat-pos/' element={<Home />} />
+            <Route path='/retreat-app/' element={<Home />} />
             <Route path='/retreat-app/retreat-pos/' element={<Home />} />
+            <Route path='/retreat-app/analytics' element={<Analytics />} />
           </Routes>
         </div>
       </BrowserRouter>

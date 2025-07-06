@@ -191,7 +191,7 @@ const OrderList = () => {
         <button
           className='submit-order-btn btn'
           // onClick={handleSubmitOrder}
-          disabled={orderItems.length === 0}
+          // disabled={orderItems.length === 0}
           onClick={handleOrderBtnClick}
         >
           주문하기

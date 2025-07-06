@@ -10,7 +10,9 @@ const Header = () => {
   useEffect(() => {
     const getTotalQuantityAndSales = async () => {
       try {
-        const { data: orders, error } = await supabase.from('orders').select('*');
+        // const { data: orders, error } = await supabase.from('orders').select('*');
+        // test
+        const { data: orders, error } = await supabase.from('orders').select('order');
 
         if (error) {
           console.error('Supabase error:', error);
