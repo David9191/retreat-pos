@@ -85,6 +85,7 @@ const OrderList = () => {
       setCustomer('');
       setNote('');
       setReceivedMoney(0);
+      setIsReservation(false);
 
       // 전역 상태 업데이트하여 WaitList 리렌더링 트리거
       triggerOrderUpdate();
@@ -112,6 +113,7 @@ const OrderList = () => {
           ))}
         </div>
 
+        {/* 주문 정보 */}
         <div className='info-group'>
           <div className='form'>
             <div className='input-container'>

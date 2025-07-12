@@ -21,7 +21,7 @@ const WaitList = () => {
         return;
       }
       setReservation(orders.filter(item => item.is_reservation));
-      setWaitList(orders.filter(item => item.is_wait));
+      setWaitList(orders.filter(item => item.is_wait && !item.is_reservation));
       setCompletedList(orders.filter(item => !item.is_wait));
     } catch (error) {
       console.error(error);
@@ -32,13 +32,24 @@ const WaitList = () => {
     getOrders();
   }, [orderUpdateTrigger]);
 
-  const handleStatusBtnClick = async (e, isCancel = false) => {
+  const handleStatusBtnClick = async (e, isCompletedCancel = false) => {
     try {
-      const { error } = await supabase
-        .from('orders')
-        .update(isCancel ? { is_wait: true } : { is_wait: false })
-        .eq('id', e.target.value);
-      if (error) console.error(error.message);
+      const orderType = e.target.name;
+      console.log(orderType);
+
+      if (orderType === 'reservation') {
+        const { error } = await supabase
+          .from('orders')
+          .update(isCompletedCancel ? { is_reservation: true } : { is_reservation: false })
+          .eq('id', e.target.value);
+        if (error) console.error(error.message);
+      } else if (orderType === 'preparing') {
+        const { error } = await supabase
+          .from('orders')
+          .update(isCompletedCancel ? { is_wait: true } : { is_wait: false })
+          .eq('id', e.target.value);
+        if (error) console.error(error.message);
+      }
       getOrders();
     } catch (error) {
       console.error(error);
@@ -59,6 +70,7 @@ const WaitList = () => {
 
   return (
     <div id='order-wait-completed-list'>
+      {/* 예약 */}
       <div>
         <header>Reservations</header>
         <div className='wait-list-container'>
@@ -76,6 +88,7 @@ const WaitList = () => {
                 <div className='button-box'>
                   <button
                     className='to-completed-btn btn'
+                    name='reservation'
                     onClick={handleStatusBtnClick}
                     value={item.id}
                   >
@@ -94,6 +107,7 @@ const WaitList = () => {
           </ul>
         </div>
       </div>
+      {/* 제조중 */}
       <div>
         <header>Preparing</header>
         <div className='wait-list-container'>
@@ -113,6 +127,7 @@ const WaitList = () => {
                     className='to-completed-btn btn'
                     onClick={handleStatusBtnClick}
                     value={item.id}
+                    name='preparing'
                   >
                     완료
                   </button>
