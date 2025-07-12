@@ -12,8 +12,14 @@ const Analytics = () => {
     donationResult: 0,
   });
 
+  const today = new Date().toISOString().slice(0, 10); // 'YYYY-MM-DD'
+
   const getMenuCounts = async type => {
-    const { data, error } = await supabase.from('orders').select('order');
+    const { data, error } = await supabase
+      .from('orders')
+      .select('order')
+      .gte('created_at', today + 'T00:00:00')
+      .lt('created_at', today + 'T23:59:59');
 
     if (error) console.error(error.message);
 
@@ -32,7 +38,11 @@ const Analytics = () => {
   };
 
   const getDonationCounts = async () => {
-    const { data, error } = await supabase.from('orders').select('donation');
+    const { data, error } = await supabase
+      .from('orders')
+      .select('donation')
+      .gte('created_at', today + 'T00:00:00')
+      .lt('created_at', today + 'T23:59:59');
 
     if (error) console.error(error.message);
 

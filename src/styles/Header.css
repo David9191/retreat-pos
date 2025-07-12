@@ -15,12 +15,22 @@
   position: relative;
 }
 
+#to-analytics {
+  margin: 0;
+  text-align: center;
+  position: absolute;
+  left: 10rem;
+  font-size: 1.7rem;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 #title {
   margin: 0;
   text-align: center;
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-51%);
   font-size: 2.5rem;
   font-weight: bold;
 }

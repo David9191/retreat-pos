@@ -8,11 +8,15 @@ const Header = () => {
   const [totalSales, setTotalSales] = useState(0);
 
   useEffect(() => {
+    const today = new Date().toISOString().slice(0, 10); // 'YYYY-MM-DD'
+
     const getTotalQuantityAndSales = async () => {
       try {
-        // const { data: orders, error } = await supabase.from('orders').select('*');
-        // test
-        const { data: orders, error } = await supabase.from('orders').select('order');
+        const { data: orders, error } = await supabase
+          .from('orders')
+          .select('order')
+          .gte('created_at', today + 'T00:00:00')
+          .lt('created_at', today + 'T23:59:59');
 
         if (error) {
           console.error('Supabase error:', error);
@@ -38,7 +42,13 @@ const Header = () => {
 
   return (
     <header id='header'>
-      <h1 id='title'>LIB Retreat Order Summary</h1>
+      <a href='http://localhost:5173/retreat-app/analytics' id='to-analytics'>
+        통계
+      </a>
+
+      <h1 id='title'>
+        <a href='http://localhost:5173'>LIB Retreat Order Summary</a>
+      </h1>
       <div className='info'>
         <div id='total-quantity'>총 수량: {formatNumber(totalQuantity)}개</div>
         <div id='total-sales'>총 매출: {formatCurrency(totalSales)}</div>
