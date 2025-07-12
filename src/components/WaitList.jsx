@@ -20,7 +20,7 @@ const WaitList = () => {
         console.error(error.message);
         return;
       }
-      setReservation(orders.filter(item => item.is_reservation));
+      setReservation(orders.filter(item => item.is_wait && item.is_reservation));
       setWaitList(orders.filter(item => item.is_wait && !item.is_reservation));
       setCompletedList(orders.filter(item => !item.is_wait));
     } catch (error) {
@@ -34,24 +34,11 @@ const WaitList = () => {
 
   const handleStatusBtnClick = async (e, isCompletedCancel = false) => {
     try {
-      const orderType = e.target.name;
-      console.log(orderType);
-
-      if (orderType === 'reservation') {
-        const { error } = await supabase
-          .from('orders')
-          .update(
-            isCompletedCancel ? { is_reservation: true } : { is_reservation: false, is_wait: false }
-          )
-          .eq('id', e.target.value);
-        if (error) console.error(error.message);
-      } else if (orderType === 'preparing') {
-        const { error } = await supabase
-          .from('orders')
-          .update(isCompletedCancel ? { is_wait: true } : { is_wait: false })
-          .eq('id', e.target.value);
-        if (error) console.error(error.message);
-      }
+      const { error } = await supabase
+        .from('orders')
+        .update(isCompletedCancel ? { is_wait: true } : { is_wait: false })
+        .eq('id', e.target.value);
+      if (error) console.error(error.message);
       getOrders();
     } catch (error) {
       console.error(error);
@@ -146,6 +133,7 @@ const WaitList = () => {
           </ul>
         </div>
       </div>
+      {/* 완료 */}
       <div>
         <header>Completed</header>
         <div className='completed-list-container'>
