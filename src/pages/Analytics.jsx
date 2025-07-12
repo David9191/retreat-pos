@@ -83,7 +83,7 @@ const Analytics = () => {
           <div className='menu-item'>
             <h4>매실</h4>
             <p>판매량: {result.plumResult}잔</p>
-            <p>판매액: {formatCurrency(result.plumResult * 4000)}</p>
+            <p>판매액: {formatCurrency(result.plumResult * 3000)}</p>
           </div>
           <div className='menu-item'>
             <h4>과일컵</h4>
@@ -127,7 +127,7 @@ const Analytics = () => {
               {formatCurrency(
                 result.coffeeResult * 3000 +
                   result.iceTeaResult * 3000 +
-                  result.plumResult * 4000 +
+                  result.plumResult * 3000 +
                   result.fruitsCupResult * 4000 +
                   result.donationResult
               )}
