@@ -18,7 +18,7 @@ const OrderList = () => {
   const menuItems = [
     { id: 1, name: '커피', price: 3000 },
     { id: 2, name: '아이스티', price: 3000 },
-    { id: 3, name: '매실', price: 4000 },
+    { id: 3, name: '매실', price: 3000 },
     { id: 4, name: '과일컵', price: 4000 },
   ];
 

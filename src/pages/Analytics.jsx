@@ -112,7 +112,7 @@ const Analytics = () => {
               {formatCurrency(
                 result.coffeeResult * 3000 +
                   result.iceTeaResult * 3000 +
-                  result.plumResult * 4000 +
+                  result.plumResult * 3000 +
                   result.fruitsCupResult * 4000
               )}
             </p>
