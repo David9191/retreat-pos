@@ -40,7 +40,9 @@ const WaitList = () => {
       if (orderType === 'reservation') {
         const { error } = await supabase
           .from('orders')
-          .update(isCompletedCancel ? { is_reservation: true } : { is_reservation: false })
+          .update(
+            isCompletedCancel ? { is_reservation: true } : { is_reservation: false, is_wait: false }
+          )
           .eq('id', e.target.value);
         if (error) console.error(error.message);
       } else if (orderType === 'preparing') {
