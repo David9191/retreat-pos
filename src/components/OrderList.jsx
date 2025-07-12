@@ -10,6 +10,7 @@ const OrderList = () => {
   const [note, setNote] = useState('');
   const [receivedMoney, setReceivedMoney] = useState(0);
   const { triggerOrderUpdate } = useOrderContext();
+  const [isReservation, setIsReservation] = useState(false);
   const totalQuantity = orderItems.reduce((sum, item) => sum + item.quantity, 0);
   const totalSales = orderItems.reduce((sum, item) => sum + item.total, 0);
 
@@ -66,15 +67,13 @@ const OrderList = () => {
 
   const handleOrderBtnClick = async () => {
     try {
-      const { error } = await supabase
-        .from('orders')
-        .insert({
-          customer,
-          note,
-          order: JSON.stringify(orderItems),
-          donation: Math.max(0, receivedMoney - totalSales),
-        })
-        .select();
+      const { error } = await supabase.from('orders').insert({
+        customer,
+        note,
+        order: JSON.stringify(orderItems),
+        donation: Math.max(0, receivedMoney - totalSales),
+        is_reservation: isReservation,
+      });
 
       if (error) {
         console.error('Supabase error:', error);
@@ -147,6 +146,28 @@ const OrderList = () => {
                 placeholder='받은 돈'
               />
               <label htmlFor='received-money'>받은 돈</label>
+            </div>
+            <div class='basic-container'>
+              <div>
+                <input
+                  type='radio'
+                  id='normal'
+                  name='isReservation'
+                  checked={!isReservation}
+                  onChange={() => setIsReservation(false)}
+                />
+                <label htmlFor='normal'>일반</label>
+              </div>
+              <div>
+                <input
+                  type='radio'
+                  id='reservation'
+                  name='isReservation'
+                  checked={isReservation}
+                  onChange={() => setIsReservation(true)}
+                />
+                <label htmlFor='reservation'>예약</label>
+              </div>
             </div>
           </div>
         </div>
