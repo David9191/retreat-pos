@@ -13,6 +13,7 @@ const Analytics = () => {
   });
 
   const today = new Date().toISOString().slice(0, 10); // 'YYYY-MM-DD'
+  // const lastWeek = '2025-07-06';
 
   const getMenuCounts = async type => {
     const { data, error } = await supabase

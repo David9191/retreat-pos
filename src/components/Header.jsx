@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import supabase from '../supabaseClient';
 import { formatNumber, formatCurrency } from '../utils/formatNumber';
 import '../styles/Header.css';
+import PreviousMap_ from 'postcss/lib/previous-map';
 
 const Header = () => {
   const [totalQuantity, setTotalQuantity] = useState(0);
@@ -9,10 +10,11 @@ const Header = () => {
 
   useEffect(() => {
     const today = new Date().toISOString().slice(0, 10); // 'YYYY-MM-DD'
+    // const lastWeek = '2025-07-06';
 
     const getTotalQuantityAndSales = async () => {
       try {
-        const { data: orders, error } = await supabase
+        const { data, error } = await supabase
           .from('orders')
           .select('order')
           .gte('created_at', today + 'T00:00:00')
@@ -23,15 +25,26 @@ const Header = () => {
           return;
         }
 
-        setTotalQuantity(orders.length);
+        const order = data.map(item => {
+          return JSON.parse(item.order);
+        });
 
-        const totalAmountAll = orders.reduce((acc, orderObj) => {
-          const items = JSON.parse(orderObj.order);
-          const orderTotal = items.reduce((sum, item) => sum + item.total, 0);
-          return acc + orderTotal;
+        const totalQuantity = order.reduce((prevQuantity, currentOrder) => {
+          const currentOrderQuantity = currentOrder.reduce((sumQuantity, item) => {
+            return sumQuantity + item.quantity;
+          }, 0);
+          return prevQuantity + currentOrderQuantity;
         }, 0);
 
-        setTotalSales(totalAmountAll);
+        const totalSales = order.reduce((prevSales, currentOrder) => {
+          const currentOrderSales = currentOrder.reduce((sumSales, item) => {
+            return sumSales + item.total;
+          }, 0);
+          return prevSales + currentOrderSales;
+        }, 0);
+
+        setTotalQuantity(totalQuantity);
+        setTotalSales(totalSales);
       } catch (err) {
         console.error('Fetch error:', err);
       }
